@@ -19,6 +19,7 @@ type Project struct {
 }
 
 var mutex sync.Mutex
+
 const dataDir = "data"
 
 // SaveProject stores the project details in a JSON file and returns the generated ID.
@@ -53,7 +54,7 @@ func SaveProject(p Project) (string, error) {
 	return p.ID, nil
 }
 
-// LoadProject loads a project from its JSON file by ID.
+// LoadProject loads a project from its JSON file by ID
 func LoadProject(id string) (Project, error) {
 	mutex.Lock()
 	defer mutex.Unlock()
