@@ -6,8 +6,7 @@ import (
 
 // Apply handles alignment by determining the width of the ASCII art
 // and padding it based on a standard terminal/container width.
-// However, since we are returning HTML, we can also just rely on CSS
-// by wrapping the output in a container with text-align.
+
 func Apply(asciiArt, align string) string {
 	if align == "" || align == "left" {
 		return asciiArt
