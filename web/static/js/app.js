@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.getElementById('heroSection');
     const btnGetStarted = document.getElementById('btnGetStarted');
 
+    const logo = document.querySelector('.logo');
+
     // Handle Landing Page logic
     if (localStorage.getItem('ascii_studio_returning') === 'true') {
         if (heroSection) heroSection.classList.add('hidden');
@@ -29,6 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Optionally focus the text input
             setTimeout(() => textInput.focus(), 600);
         });
+    }
+
+    if (logo) {
+        logo.addEventListener('click', () => {
+            localStorage.removeItem('ascii_studio_returning');
+            if (heroSection) {
+                heroSection.classList.remove('hidden');
+                setTimeout(() => heroSection.style.opacity = '1', 50);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        logo.style.cursor = 'pointer';
     }
 
     if (mobileMenuBtn && navLinks) {
