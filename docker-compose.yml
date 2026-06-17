@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   ascii-studio:
-    build: .
+    image: manjaws/ascii-studio:latest
     ports:
       - "8087:8087"
     volumes:
