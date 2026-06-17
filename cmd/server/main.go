@@ -34,9 +34,14 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/", handleIndex)
 
-	port := ":8087"
-	log.Printf("Server is starting on port %s...", port)
-	if err := http.ListenAndServe(port, nil); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8087" // Fallback for local development
+	}
+
+	addr := ":" + port
+	log.Printf("Server is starting on port %s...", addr)
+	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
